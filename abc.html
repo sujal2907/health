@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Empowered Pregnancy Landing Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #f0f0f0, #e6f7ff); /* Gradient background */
+      margin: 0;
+      padding: 0;
+    }
+    
+    #header {
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #ffb3b3; /* Border bottom for heading */
+    }
+    
+    #header h1 {
+      font-family: 'Georgia', serif; /* Decorative font */
+      font-size: 48px;
+      color: #333333;
+      margin: 10px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow */
+    }
+    
+    #quote {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #333333;
+      text-align: center;
+      animation: changeQuote 10s infinite;
+      opacity: 0;
+    }
+    
+    @keyframes changeQuote {
+      0%, 90%, 100% { opacity: 0; }
+      10% { opacity: 1; }
+    }
+    
+    #image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      animation: changeImage 10s infinite;
+    }
+    
+    @keyframes changeImage {
+      0%, 20% { background-image: url('image1.jpg'); }
+      25%, 45% { background-image: url('image2.jpg'); }
+      50%, 70% { background-image: url('image3.jpg'); }
+      75%, 95% { background-image: url('image4.jpg'); }
+    }
+    
+    #links {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    
+    #links a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #333333;
+      font-weight: bold;
+    }
+    
+    #links a:hover {
+      color: #007bff;
+    }
+    
+    #content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    #signup-button {
+      display: inline-block;
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    
+    #signup-button:hover {
+      background-color: #0056b3;
+    }
+    
+    #footer {
+      background-color: #333333;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    #footer p {
+      margin: 0;
+    }
+    
+    #footer a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Empowered Pregnancy</h1> <!-- Updated heading -->
+  </div>
+  <div id="quote">
+    <span>Embrace the journey, for within you lies the miracle of life.</span>
+    <span>Believe in yourself, for you are capable of incredible things.</span>
+    <span>You are strong, beautiful, and capable. Trust yourself.</span>
+  </div>
+  <div id="image"></div>
+  <div id="links">
+    <a href="timeline.html">Timeline</a>
+    <a href="child.html">ChildCare</a>
+    <a href="video.html">Video</a>
+  </div>
+  
+  <div id="content">
+    <p>Experience the power of motivation and inspiration as you embark on this incredible journey of motherhood.</p>
+    <p>Sign up now to receive daily motivation straight to your inbox and unlock exclusive content designed just for you.</p>
+
+  </div>
+  
+  <div id="footer">
+    <p>© 2024 Empowered Pregnancy. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+  </div>
+  
+  <script>
+    const quoteElement = document.getElementById('quote');
+    const quote1Element = document.getElementById('quote1');
+    const quote2Element = document.getElementById('quote2');
+    const quote3Element = document.getElementById('quote3');
+    
+    const quotes = [
+      "Embrace the journey, for within you lies the miracle of life.",
+      "Believe in yourself, for you are capable of incredible things.",
+      "You are strong, beautiful, and capable. Trust yourself."
+    ];
+    let currentQuoteIndex = 0;
+    
+    function changeQuote() {
+      quoteElement.innerText = quotes[currentQuoteIndex];
+      quote1Element.style.opacity = "0";
+      quote2Element.style.opacity = "0";
+      quote3Element.style.opacity = "0";
+      document.getElementById(`quote${currentQuoteIndex + 1}`).style.opacity = "1";
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+    }
+    
+    setInterval(changeQuote, 10000);
+  </script>
+</body>
+</html>

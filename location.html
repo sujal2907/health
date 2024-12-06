@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Doctors</title>
+    <style>
+        /* Style for map container */
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for heading */
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: #333;
+            font-family: 'Roboto', sans-serif; /* Change font family to Google font */
+            font-weight: bold; /* Add font weight */
+            text-transform: uppercase;
+            background-color: #f0f0f0; /* Change background color */
+            padding: 15px 0; /* Add padding for better spacing */
+            border-radius: 5px; /* Add border radius */
+        }
+
+        /* Style for markers */
+        .marker {
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            cursor: pointer;
+        }
+
+        /* Style for dummy data */
+        #services-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #services-list li {
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for hospital links */
+        #services-list li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nearby Doctors</h1>
+    <div id="map"></div>
+
+    <script>
+        // Function to initialize the map
+        function initMap() {
+            // Default location (Bennett University, Greater Noida)
+            var defaultLocation = { lat: 28.4490, lng: 77.5345 };
+
+            // Initialize map centered at default location
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: defaultLocation,
+                zoom: 12
+            });
+
+            // Perform a search for doctors in Greater Noida
+            var address = 'Bennett University, Greater Noida'; // Example location
+            var apiUrl = 'https://nominatim.openstreetmap.org/search?format=json&q=' + address + '+doctor';
+
+            // Fetch data from the Nominatim API
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Loop through the results and add markers to the map
+                    data.forEach(result => {
+                        var marker = new google.maps.Marker({
+                            position: { lat: parseFloat(result.lat), lng: parseFloat(result.lon) },
+                            map: map,
+                            title: result.display_name,
+                            icon: {
+                                url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                                scaledSize: new google.maps.Size(30, 30)
+                            }
+                        });
+
+                        // Add click event listener to marker (optional)
+                        marker.addListener('click', function() {
+                            alert('You clicked on ' + result.display_name);
+                        });
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+    </script>
+    <!-- Include Google Maps JavaScript API with your API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wqZGzMn_VipmpbadlZ-ACG_gpFkj2-M&callback=initMap" async defer></script>
+    
+    <!-- Dummy data -->
+    <script>
+        var dummyData = [
+            { name: "Dr. Meenu Aggarwal", address: "Ivory hospital NH-25 Greater Noida", link: "https://www.ivoryhospitals.com/" },
+            { name: "Dr. Ramvir Singh", address: "Shri Krishna Life Line Hospital NH-22D Sector-TAU", link:"https://www.google.com/maps/place/Shri+Krishna+Life+Line+Hospital/@28.4608476,77.5323297,17z/data=!3m1!4b1!4m6!3m5!1s0x390cc0247d2ca441:0x9870bda91a68aaff!8m2!3d28.4608476!4d77.5323297!16s%2Fg%2F124ynh923?entry=ttu" },
+            { name: "Dr. Vibhor Sharma", address: "Yatharth Super Speciality Hospital, Greater Noida", link: "https://www.yatharthhospitals.com/" },
+            { name: "Dr. Sarah Bhist", address: "Aavaam hospital-Surajpur", link: "" },
+        ];
+
+        var servicesList = document.createElement('ul');
+        servicesList.id = 'services-list';
+        document.body.appendChild(servicesList);
+
+        dummyData.forEach(service => {
+            var listItem = document.createElement('li');
+            var anchor = document.createElement('a');
+            anchor.href = service.link;
+            anchor.textContent = service.name + ' - ' + service.address;
+            listItem.appendChild(anchor);
+            servicesList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

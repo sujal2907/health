@@ -1,0 +1,220 @@
+/* *{
+    font-family: 'Nunito',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all 2s linear;
+    text-transform: capitalize;
+}
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+body{
+    background: #eee;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+.container .title{
+    font-size: 3.5rem;
+    color: #444;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+.container .infant-care{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    gap: 4rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    background-size: contain;
+
+} */
+
+
+/* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all 0.3s ease; 
+    text-transform: capitalize;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: #eee;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.container .title {
+    font-size: 3.5rem;
+    color: #444;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container .infant {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container .infant:hover .desc {
+    transform: translateY(0);
+}
+
+.container .infant img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; 
+
+.container .infant:hover img {
+    transform: scale(1.1); 
+}
+
+.container .infant .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    color: #fff;
+    transform: translateY(100%);
+    transition: transform 0.3s ease; 
+}
+
+.container .infant h3 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+}  */
+
+.container .infant-care {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 2rem; /* Gap between cards */
+    margin: 0 auto; /* Center the grid */
+    max-width: 1000px; /* Limit the maximum width */
+    cursor: pointer;
+}
+
+.container .infant {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container .infant:hover .desc {
+    transform: translateY(0);
+}
+
+.container .infant img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.container .infant:hover img {
+    transform: scale(1.1);
+}
+.container .title{
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Nunito', sans-serif;
+}
+.container .infant .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    color: #fff;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.container .infant h3 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+.container .infant .expanded-content {
+    display: none; /* Initially hide expanded content */
+    padding: 1rem;
+}
+
+.container .infant.expanded .expanded-content {
+    display: block;
+     /* Show expanded content when parent has 'expanded' class */
+}
+.container .infant.expanded {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(255, 222, 222, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+/* .container .infant.expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.container .infant.expanded img {
+    /* max-width: 40%;
+    max-height: 40%;
+    margin-left: 60px;  */
+    display: none;
+} 
+
+.container .infant.expanded .desc {
+    display: none;
+}
+.container .infant.expanded .month {
+    display: none;
+}
+.container .infant.expanded h3 {
+    text-align: left;
+}
+
+
+
